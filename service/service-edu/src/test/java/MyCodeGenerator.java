@@ -42,6 +42,7 @@ public class MyCodeGenerator {
         dsc.setUrl("jdbc:mysql://localhost:3306/guli?serverTimezone=GMT%2B8");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
+        dsc.setPassword("root");
         dsc.setDbType(DbType.MYSQL);
         mpg.setDataSource(dsc);
         // 4、包配置
