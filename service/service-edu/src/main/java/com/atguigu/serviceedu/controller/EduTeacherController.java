@@ -28,7 +28,7 @@ public class EduTeacherController {
     @Autowired
     private EduTeacherService eduTeacherService;
 
-    @GetMapping
+    @GetMapping("get")
     @ApiOperation(value = "所有讲师列表")
     @ApiImplicitParam(name = "id", value = "id", paramType = "query", dataType="String")
     public List<EduTeacher> list(){
@@ -38,7 +38,7 @@ public class EduTeacherController {
     @GetMapping("delete")
     @ApiOperation(value = "删除讲师")
     @ApiImplicitParam(name = "id", value = "id", paramType = "query", dataType="String")
-    public boolean removeById(@PathVariable String id){
+    public boolean removeById(@RequestParam String id){
         return eduTeacherService.removeById(id);
     }
 }
