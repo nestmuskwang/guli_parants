@@ -11,12 +11,14 @@
 
     <artifactId>service-edu</artifactId>
     <dependencies>
+        <!-- 加入commonUtils 公共类引用  2方库-->
         <dependency>
             <groupId>com.trainning</groupId>
             <artifactId>common-utils</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>com.trainning</groupId>
             <artifactId>common-utils</artifactId>

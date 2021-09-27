@@ -1,6 +1,8 @@
 package com.atguigu.serviceedu.service;
 
 import com.atguigu.serviceedu.entity.EduTeacher;
+import com.atguigu.serviceedu.entity.vo.TeacherQueryVO;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface EduTeacherService extends IService<EduTeacher> {
 
+    void pageQueryList(Page<EduTeacher> eduTeacherPage, TeacherQueryVO teacherQueryVO);
 }
