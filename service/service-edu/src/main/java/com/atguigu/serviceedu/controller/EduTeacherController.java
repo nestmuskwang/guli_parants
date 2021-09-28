@@ -3,6 +3,7 @@ package com.atguigu.serviceedu.controller;
 
 
 import com.atguigu.commonutils.R;
+import com.atguigu.servicebase.globle.MyGlobalException;
 import com.atguigu.serviceedu.entity.EduTeacher;
 import com.atguigu.serviceedu.entity.vo.TeacherQueryVO;
 import com.atguigu.serviceedu.service.EduTeacherService;
@@ -30,8 +31,12 @@ public class EduTeacherController {
 
     @GetMapping("get")
     @ApiOperation(value = "所有讲师列表")
-    @ApiImplicitParam(name = "id", value = "id", paramType = "query", dataType="String")
     public R list(){
+        try {
+            int i = 10/0;
+        } catch (Exception exception) {
+            throw  new MyGlobalException(5000 ,"自定义全局异常");
+        }
         return  R.ok().data("item",eduTeacherService.list(null));
     }
 
@@ -67,5 +72,37 @@ public class EduTeacherController {
         eduTeacherService.pageQueryList(eduTeacherPage,teacherQueryVO);
         return R.ok().data("total",eduTeacherPage.getTotal()).data("rows",eduTeacherPage.getRecords()).data("pageSize",eduTeacherPage.getPages());
     }
+    @PostMapping("save")
+    @ApiOperation(value = "新增讲师")
+    public  R saveTeacher(@ApiParam(name = "eduTeacher", value = "新增讲师", required = true) @RequestBody EduTeacher eduTeacher){
+        boolean save = eduTeacherService.save(eduTeacher);
+        if (save){
+            return R.ok().message("新增成功");
+        }
+        return  R.error().message("新增失败");
+    }
+
+    @PostMapping("updata")
+    @ApiOperation(value = "更新讲师信息")
+    public R updataInfo(@ApiParam(name = "eduTeacher", value = "更新讲师", required = true) @RequestBody EduTeacher eduTeacher){
+        boolean b = eduTeacherService.updateById(eduTeacher);
+        if (!b){
+            return R.error().message("更新信息失败");
+        }
+        return R.ok().message("更新信息成功");
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
