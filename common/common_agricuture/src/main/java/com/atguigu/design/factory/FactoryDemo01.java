@@ -6,4 +6,6 @@ package com.atguigu.design.factory;
  * @Version 1.0
  */
 public class FactoryDemo01 {
+
+
 }
